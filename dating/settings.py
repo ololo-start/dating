@@ -146,8 +146,8 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.vk.VKOAuth2',
     'social_core.backends.linkedin.LinkedinOAuth2',
 ]
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('GOOGLE_KEY')
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('GOOGLE_SECRET')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '252824708833-qrc6sa5phnf366uuf3gg0cme4nd6j5j4.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'JiemWVyXlP2eiLZpK0qPPBGi'
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = os.getenv('VK_KEY')
 SOCIAL_AUTH_VK_OAUTH2_SECRET = os.getenv('VK_SECRET')
