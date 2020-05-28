@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}"/>
+</head>
+<body class="start">
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="align-content-lg-start">
+            {% if not request.user.is_authenticated %}<h3 class="font-weight-bold">Welcome to RabbitDating
+                <p>Please Log in or Sign up</h3></p>
+                <a role="button" href="{% url 'auth:login' %}" class="btn btn-dark" type="submit">Get started now</a></div>
+            {% else %}<div class="align-content-lg-start">
+                <h3 class="font-weight-bold">Hello {{ request.user }}</h3>
+                <div><a role="button" href="{% url 'profile' pk=user.id %}" id="start_btn" class="btn btn-dark" type="submit">Get started now</a></div></div>
+            {% endif %}
+    </div>
+</div>
+</body>
+</html>

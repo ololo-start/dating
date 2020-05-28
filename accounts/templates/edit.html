@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Edit{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-xl-8 col-md-12">
+                <div class="edit-block"><h3 class="font-weight-bold">Edit profile</h3>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for field in user_form %}
+                            {% include 'includes/edit_form.html' %}
+                        {% endfor %}
+                        {% for field in profile_form %}
+                            {% include 'includes/edit_form.html' %}
+                        {% endfor %}
+                        <div class="row align-items-center"  >
+                            <input class="text-white text-weight-bold bt" id="edit_button" type="submit" value="Save changes"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

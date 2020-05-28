@@ -1,0 +1,14 @@
+<div class="chatbox__messages">
+    <div class="chatbox__messages__user-message">
+        <div class="chatbox__messages__user-message--ind-message">
+            <div class="display" id="chatbox__messages_displey">
+                <div class="name"> <a href="{% url 'profile' pk=message.author_id %}">{{ message.author.first_name }}</a>
+                </div>
+                <div class="sent">{{ message.sent_at }}
+                </div>
+            </div>
+            <hr>
+            <p class="message">{{message.message}}</p>
+        </div>
+    </div>
+</div>

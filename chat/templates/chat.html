@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Chats {% endblock %}
+{% block content %}
+    <div class="chatbox">
+        {% for message in chat_messages %}
+            {% include 'includes/message.html' with message=message %}
+        {% endfor %}
+        <form  method="post" >
+            {% csrf_token %}
+            {{ form }}
+            <button  type="submit" class="btn btn-dark" id="btn-chat">
+                Send</button>
+        </form>
+    </div>
+    <div class="pagination">
+    <span class="step-links">
+    {% if chat_messages.has_previous %}
+        <a href="?page={{ chat_messages.previous_page_number }}">Previous</a>
+    {% endif %}
+        {% if chat_messages.has_next %}
+            <a href="?page={{ chat_messages.next_page_number }}">Next</a>
+        {% endif %}
+    </span>
+    </div>
+{% endblock %}

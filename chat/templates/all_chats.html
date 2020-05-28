@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static my_tags %}
+{% block title %}Chats {% endblock %}
+{% block content %}
+    {% if not chats %}
+        <h3>You have not start any chat</h3>
+    {% endif %}
+    <div class="card" id="all_chat_list">
+        {% for chat in chats %}
+            {% with last_message=chat.messages.last %}
+                {% get_partner user chat as partner %}
+                <a class="list-group-item" href="{% url 'messages' pk=chat.id %}">
+                    <div class="card-body">
+                        <div class="chat_list_inline">
+                            <img class="rounded-circle" width="60" src="{{ partner.userprofile.get_image }}">
+                            <div class="chat_list_name">{{ partner.username }}</div>
+                            <div class="chat_list_sent_data"><small>{{ last_message.sent_at }}</small></div>
+                        </div>
+                        {% if partner == last_message.author and not last_message.is_read %}
+                            <div class="chat_list_message_unread"><p>{{ last_message.message|truncatechars:"135" }}</p></div>
+                        {% else %}
+                            <div class="chat_list_message">{{ last_message.message|truncatechars:"200" }}</div>
+                        {% endif %}
+                    </div>
+                </a>
+            {% endwith %}
+        {% endfor %}
+    </div>
+{% endblock %}
+

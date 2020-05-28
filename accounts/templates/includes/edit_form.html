@@ -1,0 +1,9 @@
+{% if field.errors %}
+    <div class=" alert-danger">{{ field.errors }}</div>
+{% endif %}
+<div class="row align-items-center " >
+    {{ field.label_tag }} {{ field }} </div>
+<div class="row help-text" >
+    {% for help in field.help_text %}
+        <p>{{ help }}</p>
+    {% endfor %}</div>

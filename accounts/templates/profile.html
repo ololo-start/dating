@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static  my_tags %}
+{% block title %}{{ user.first_name }} profile{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-md-12">
+                <div class="card user-card-full">
+                    <div class="row m-l-0 m-r-0">
+                        <div class="card-block text-center text-white">
+                            <div class="m-b-25">
+                                <img class="img-fluid" src="{{ user.userprofile.get_image }}">
+                            </div>
+                            <div class="m-b-25">
+                                {% if selected_user.id == user.id %}
+                                    <a href="{% url 'edit' %}" class="btn-dark ">Edit profile</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card-block">
+                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">First name</p>
+                                        <h6 class="text-muted f-w-400">{{ user.first_name}}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Last name</p>
+                                        <h6 class="text-muted f-w-400">{{ user.last_name}}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">City</p>
+                                        <h6 class="text-muted f-w-400">{{ user.userprofile.location }}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Date of birth</p>
+                                        <h6 class="text-muted f-w-400">{{ user.userprofile.birthday|date:"d M Y" }}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Gender</p>
+                                        <h6 class="text-muted f-w-400">{{ user.userprofile.gender }}</h6>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Sexual orientation</p>
+                                        <h6 class="text-muted f-w-400">{{ user.userprofile.orientation }}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">About</p>
+                                        <h6 class="text-muted f-w-400">{{ user.userprofile.about }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

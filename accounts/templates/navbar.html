@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'start' %}">Start</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'profile' pk=request.user.id %}"> To my profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'people' %}">Find your love</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'pair' %}">Pair</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'chats' %}">Chat</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <div class="navbar_user"> Hello {{ request.user }} </div>
+            <a role="button" href="{% url 'auth:logout' %}" class="btn btn-light my-2 my-sm-0" type="submit">Logout</a>
+        </form>
+    </div>
+</nav>

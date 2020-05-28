@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static my_tags %}
+{% block title %}Find your love{% endblock %}
+{% block content %}
+    {% with partners=object_list %}
+        {% if partners %}
+            {% for partner in partners %}
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-6 col-md-12">
+                            <div class="card" id="people_listcard">
+                                <img class="img-thumbnail " src="{{ partner.userprofile.get_image }}">
+                                    <div class="card-body">
+                                        <div class="like_list_inline">
+                                            <p class="card-text">{{ partner.first_name }}</p>
+                                            {% if partner.userprofile.birthday and partner.userprofile.location  %}
+                                                <p class="card-text">{{ partner.userprofile.birthday|age }}, {{ partner.userprofile.location }} </p>
+                                            {% endif %}
+                                        </div>
+                                    <div class="like_list_inline">
+                                     <div class="likef">
+                                        <a href="{% url 'like' pk=partner.id  %}" type="button" class="btn btn-outline-success"> Like </a>
+                                     </div>
+                                    <div class="dislike">
+                                        <a href="{% url 'dislike' pk=partner.id  %}"  type="button" class="btn btn-outline-danger"> Dislike </a>
+                                    </div>
+                                    <div class="more_info"><a href="{% url 'profile' pk=partner.id %}" type="button" class="btn btn-outline-info" >More info</a>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                 <h3 class="font-weight-bold">No more people(</h3>
+             {% endif %}
+         {% endwith %}
+        </div>
+    </div>
+</div>
+{% endblock %}
