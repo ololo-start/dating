@@ -1,6 +1,7 @@
 import datetime
 from django.db import models
 from django.contrib.auth.models import User
+import base64
 
 
 class UserProfile(models.Model):
@@ -46,6 +47,7 @@ class UserProfile(models.Model):
     location = models.CharField(max_length=30, null=True)
     birthday = models.DateField(null=True)
     avatar = models.ImageField(upload_to='user/%Y/%m/%d/', blank=True)
+    avatar_base64 = models.TextField(default=None, null=True, blank=True)
     age = models.CharField(max_length=15, blank=True, null=True)
     partner_gender = models.CharField(
         max_length=6,
@@ -66,11 +68,7 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.first_name
 
-    def get_image(self):
-        if self.avatar:
-            return self.avatar.url
-        else:
-            return 'media/default.jpg'
+
 
     @property
     def get_age(self):
@@ -92,8 +90,21 @@ class UserProfile(models.Model):
 
     def save(self, *args, **kwargs):
         self.age = self.get_age
+        if self.avatar:
+            self.avatar_base64 = 'data:{content_type};base64,{data}'.format(
+                content_type='jpeg',
+                data=base64.b64encode(
+                    self.avatar.file.read()
+                ).decode()
+            )
         super().save(*args, **kwargs)
 
+    @property
+    def get_image(self):
+        if self.avatar:
+            return self.avatar_base64 or self.avatar.url
+        else:
+            return 'media/default.jpg'
 
 class UserLike(models.Model):
     to_user = models.ForeignKey(User, on_delete=models.CASCADE)
