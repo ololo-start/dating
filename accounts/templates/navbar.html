@@ -22,7 +22,7 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <div class="navbar_user"> Hello {{ request.user }} </div>
+            <div class="navbar_user"> Hello {{ request.user.first_name }} </div>
             <a role="button" href="{% url 'auth:logout' %}" class="btn btn-light my-2 my-sm-0" type="submit">Logout</a>
         </form>
     </div>
