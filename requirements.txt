@@ -18,6 +18,7 @@ django-extensions==2.2.5
 django-messages==0.6.0
 django-user-accounts==3.0.2
 djangorestframework==3.11.0
+django_heroku
 gunicorn==20.0.4
 hyperlink==19.0.0
 idna==2.9
