@@ -106,6 +106,7 @@ class UserProfile(models.Model):
         else:
             return 'media/default.jpg'
 
+
 class UserLike(models.Model):
     to_user = models.ForeignKey(User, on_delete=models.CASCADE)
     voter = models.ForeignKey(User, on_delete=models.CASCADE, related_name='given_vote')
