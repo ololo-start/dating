@@ -101,10 +101,8 @@ class UserProfile(models.Model):
 
     @property
     def get_image(self):
-        if self.avatar:
             return self.avatar_base64 or self.avatar.url
-        else:
-            return 'media/default.jpg'
+        
 
 
 class UserLike(models.Model):
