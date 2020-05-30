@@ -99,12 +99,12 @@ class UserProfile(models.Model):
             )
         super().save(*args, **kwargs)
 
-    @property
+
     def get_image(self):
         if self.avatar:
-            return self.avatar_base64
+            return self.avatar.url or self.avatar_base64
         else:
-            return 'media/default.jpg'
+            return '/media/default.jpg'
 
 
 class UserLike(models.Model):
