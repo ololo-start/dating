@@ -29,6 +29,9 @@
 .btn-dark:hover{
     text-decoration: none;
 }
+#btn-chat{
+display: inline-block;
+}
 h6 {
     font-size: 14px
 }
@@ -196,7 +199,7 @@ button {
 }
 
 .chatbox__messages__user-message--ind-message {
-    background: rgba(0, 0, 0, 0.98);
+    background: #1b1e21;
     padding: 1em 0;
     height: auto;
     width: 65%;

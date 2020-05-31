@@ -15,7 +15,7 @@
                 <p>Please Log in or Sign up</h3></p>
                 <a role="button" href="{% url 'auth:login' %}" class="btn btn-dark" type="submit">Get started now</a></div>
             {% else %}<div class="align-content-lg-start">
-                <h3 class="font-weight-bold">Hello {{ request.user }}</h3>
+                <h3 class="font-weight-bold">Hello {{ request.user.first_name }}</h3>
                 <div><a role="button" href="{% url 'profile' pk=user.id %}" id="start_btn" class="btn btn-dark" type="submit">Get started now</a></div></div>
             {% endif %}
     </div>
