@@ -104,7 +104,7 @@ class UserProfile(models.Model):
         if self.avatar:
             return self.avatar.url or self.avatar_base64
         else:
-            return '/static/img/default.jpg'
+            return '/media/default.jpg'
 
 
 class UserLike(models.Model):
